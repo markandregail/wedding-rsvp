@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regail &amp; Mark — RSVP</title>
+<meta name="description" content="RSVP for Regail &amp; Mark's wedding, November 11, 2026 in Tagaytay, Philippines.">
+<meta property="og:title" content="RSVP — Regail &amp; Mark">
+<meta property="og:description" content="RSVP for our wedding, November 11, 2026 in Tagaytay, Philippines.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f0f0ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2064%2064'%3E%3Crect%20width%3D'64'%20height%3D'64'%20rx%3D'16'%20fill%3D'%23faf6f0'%2F%3E%3Ctext%20x%3D'32'%20y%3D'43'%20font-family%3D'Georgia%2Cserif'%20font-style%3D'italic'%20font-size%3D'26'%20fill%3D'%23a9714f'%20text-anchor%3D'middle'%3ER%26amp%3BM%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page-transition"></div>
+
+<main>
+  <section class="rsvp" id="rsvp">
+    <h2>Kindly Reply</h2>
+    <p class="rsvp-sub">We'd love to save you a seat! Please let us know by <span class="rsvp-deadline">September 30, 2026</span> if you can celebrate with us.</p>
+    <p class="notice">Seats are reserved just for you, so we kindly ask that this invitation not be extended to additional guests. This will also be an adults-only celebration — thank you for leaving the kids at home and for understanding our venue and budget limits!</p>
+
+    <form id="lookup-form" novalidate>
+      <div class="field">
+        <label for="lookup-name">Full Name (as it appears on your invitation)</label>
+        <input type="text" id="lookup-name" name="lookup-name" required autocomplete="name">
+      </div>
+      <p class="field-error" id="lookup-error" hidden>We couldn't find that name on our guest list. Please check the spelling or reach out to us directly.</p>
+      <button type="submit" id="lookup-btn">Find My Invitation</button>
+    </form>
+
+    <div class="disambiguation" id="disambiguation" hidden>
+      <p class="disambiguation-prompt">We found a few invitations under that name — which one is yours?</p>
+      <div class="disambiguation-list" id="disambiguation-list"></div>
+      <button type="button" class="action-link" id="disambiguation-back">None of these — try again</button>
+    </div>
+
+    <form id="rsvp-form" novalidate hidden>
+      <p class="seats-note" id="seats-note"></p>
+
+      <input type="hidden" id="name" name="name">
+
+      <div class="field">
+        <label for="message">A Note for the Couple (optional)</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+
+      <fieldset class="field attending-field">
+        <legend>Will you be attending?</legend>
+        <div class="toggle-group">
+          <label class="toggle">
+            <input type="radio" name="attending" value="yes" required>
+            <span>Joyfully Accept</span>
+          </label>
+          <label class="toggle">
+            <input type="radio" name="attending" value="no" required>
+            <span>Regretfully Decline</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="field guest-field" id="guest-field">
+        <div class="field-collapse">
+          <label for="guests">Number of Guests (including you)</label>
+          <select id="guests" name="guests"></select>
+        </div>
+      </div>
+
+      <button type="submit" id="submit-btn">Send RSVP</button>
+    </form>
+
+    <div class="decline-confirm" id="decline-confirm" hidden>
+      <p class="decline-confirm-text">We understand, and thank you for letting us know — we'll offer your seat to another guest. Confirm you won't be able to join us?</p>
+      <div class="decline-confirm-actions">
+        <button type="button" class="cta-button ghost" id="decline-cancel">Go Back</button>
+        <button type="button" class="cta-button" id="decline-confirm-btn">Confirm</button>
+      </div>
+    </div>
+
+    <div class="confirmation" id="confirmation" role="status" hidden>
+      <h3 id="confirmation-title">Thank you!</h3>
+      <p id="confirmation-text">Your RSVP has been recorded. We can't wait to celebrate with you.</p>
+      <a href="index.html" class="cta-button ghost" data-transition>Back to Invitation</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>With love, Regail &amp; Mark</p>
+</footer>
+
+<script src="transition.js"></script>
+<script src="guest-list.js"></script>
+<script src="rsvp-form.js"></script>
+</body>
+</html>
