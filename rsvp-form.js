@@ -5,6 +5,7 @@ const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz8-ziUxVSlh
 const lookupForm = document.getElementById("lookup-form");
 const lookupNameInput = document.getElementById("lookup-name");
 const lookupError = document.getElementById("lookup-error");
+const lookupBtn = document.getElementById("lookup-btn");
 
 const disambiguation = document.getElementById("disambiguation");
 const disambiguationList = document.getElementById("disambiguation-list");
@@ -39,6 +40,9 @@ function selectGuestEntry(entry) {
     option.textContent = String(i);
     guestSelect.appendChild(option);
   }
+  // Default to the full party size rather than 1 — most guests bring
+  // everyone they're allotted, so this saves the common case a click.
+  guestSelect.value = String(allottedSeats);
 
   seatsNote.textContent =
     allottedSeats === 1
@@ -73,10 +77,20 @@ disambiguationBack.addEventListener("click", () => {
   lookupNameInput.focus();
 });
 
-lookupForm.addEventListener("submit", (event) => {
+lookupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const entries = findGuestEntries(lookupNameInput.value);
+  const originalLabel = lookupBtn.textContent;
+  lookupBtn.disabled = true;
+  lookupBtn.textContent = "Searching…";
+
+  let entries;
+  try {
+    entries = await findGuestEntries(lookupNameInput.value);
+  } finally {
+    lookupBtn.disabled = false;
+    lookupBtn.textContent = originalLabel;
+  }
 
   if (entries.length === 0) {
     lookupError.hidden = false;
