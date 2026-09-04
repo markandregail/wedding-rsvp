@@ -651,18 +651,28 @@ main {
 .timeline-list::before {
   content: "";
   position: absolute;
-  left: 0.7rem;
+  left: -0.7rem;
   top: 0.9rem;
   bottom: 0.9rem;
-  width: 1px;
-  background: var(--sage);
+  width: 4rem;
+  /* A hand-drawn-looking wavy stem with a handful of leaves scattered at
+     irregular positions/angles/sizes along it (not a mechanical
+     left-right-left alternation), tiled over a tall (260px) repeat so the
+     pattern doesn't read as an obvious loop. Every leaf's rotated outline
+     was checked to stay within the SVG's own canvas (0-64) before baking
+     it in — earlier drafts let some near-180°-rotated leaves swing past
+     x=0 and get clipped by the canvas edge itself, not just the CSS box. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2264%22%20height%3D%22260%22%20viewBox%3D%220%200%2064%20260%22%3E%0A%3Cpath%20d%3D%22M26.0%200.0%20Q25.1%2018.6%2023.9%2037.1%20Q13.6%2055.7%2021.8%2074.3%20Q23.5%2092.9%2027.8%20111.4%20Q15.7%20130.0%2020.9%20148.6%20Q15.5%20167.1%2026.4%20185.7%20Q23.9%20204.3%2024.4%20222.9%20Q29.1%20241.4%2020.7%20260.0%22%20fill%3D%22none%22%20stroke%3D%22%238faa82%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22/%3E%0A%3Cpath%20d%3D%22M0%2C0%20Q3.8%2C-3.9%209.6%2C0%20Q3.8%2C3.9%200%2C0%20Z%22%20fill%3D%22%236f8a63%22%20transform%3D%22translate%2818.8%2C72.6%29%20rotate%28203.8%29%22/%3E%3Cpath%20d%3D%22M0%2C0%20Q4.9%2C-5.1%2012.4%2C0%20Q4.9%2C5.1%200%2C0%20Z%22%20fill%3D%22%236f8a63%22%20transform%3D%22translate%2824.8%2C112.6%29%20rotate%28183.0%29%22/%3E%3Cpath%20d%3D%22M0%2C0%20Q3.8%2C-3.9%209.6%2C0%20Q3.8%2C3.9%200%2C0%20Z%22%20fill%3D%22%236f8a63%22%20transform%3D%22translate%2817.9%2C149.3%29%20rotate%28158.1%29%22/%3E%3Cpath%20d%3D%22M0%2C0%20Q4.4%2C-4.5%2010.9%2C0%20Q4.4%2C4.5%200%2C0%20Z%22%20fill%3D%22%236f8a63%22%20transform%3D%22translate%2829.4%2C185.2%29%20rotate%2821.2%29%22/%3E%3Cpath%20d%3D%22M0%2C0%20Q4.3%2C-4.4%2010.9%2C0%20Q4.3%2C4.4%200%2C0%20Z%22%20fill%3D%22%237f9a72%22%20transform%3D%22translate%2821.4%2C219.7%29%20rotate%28179.8%29%22/%3E%3Cpath%20d%3D%22M0%2C0%20Q3.9%2C-4.0%209.9%2C0%20Q3.9%2C4.0%200%2C0%20Z%22%20fill%3D%22%237f9a72%22%20transform%3D%22translate%2827.4%2C219.5%29%20rotate%2824.0%29%22/%3E%0A%3C/svg%3E");
+  background-repeat: repeat-y;
+  background-position: top left;
+  background-size: 4rem 16.25rem;
 }
 
 .timeline-step {
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.4rem;
   padding-bottom: 2rem;
   text-align: left;
 }
@@ -673,8 +683,8 @@ main {
 
 .timeline-dot {
   flex: none;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.9rem;
+  height: 1.9rem;
   margin-top: 0.1rem;
   z-index: 1;
 }
@@ -1535,7 +1545,7 @@ body.pre-open {
 
 .card-preamble {
   font-family: var(--sans);
-  font-size: 0.44rem;
+  font-size: 0.52rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1552,7 +1562,7 @@ body.pre-open {
 .card-name {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   line-height: 1.25;
@@ -1568,7 +1578,7 @@ body.pre-open {
 
 .card-invite {
   font-family: var(--sans);
-  font-size: 0.38rem;
+  font-size: 0.45rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1587,7 +1597,7 @@ body.pre-open {
 
 .card-date-part {
   font-family: var(--sans);
-  font-size: 0.34rem;
+  font-size: 0.4rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1596,13 +1606,13 @@ body.pre-open {
 .card-date-num {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--ink);
 }
 
 .card-year {
   font-family: var(--sans);
-  font-size: 0.34rem;
+  font-size: 0.4rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1611,7 +1621,7 @@ body.pre-open {
 
 .card-time {
   font-family: var(--sans);
-  font-size: 0.36rem;
+  font-size: 0.42rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1621,7 +1631,7 @@ body.pre-open {
 .card-venue {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 0.5rem;
+  font-size: 0.58rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--accent-strong);
@@ -1630,7 +1640,7 @@ body.pre-open {
 
 .card-place {
   font-family: var(--sans);
-  font-size: 0.34rem;
+  font-size: 0.4rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
