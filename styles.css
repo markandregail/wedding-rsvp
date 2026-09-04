@@ -164,17 +164,20 @@ body {
 }
 
 .date {
-  font-family: "Alex Brush", var(--serif);
-  font-size: 2.1rem;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.6rem;
   color: var(--ink-soft);
   margin: 0 0 2rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   opacity: 0;
   animation: fade-up 700ms ease-out 150ms forwards;
 }
 
 .date-dot {
-  font-family: "Snowburst One", var(--serif);
+  margin: 0 0.05em;
+  color: var(--accent);
 }
 
 .countdown {
@@ -648,7 +651,7 @@ main {
 .timeline-list::before {
   content: "";
   position: absolute;
-  left: 0.9rem;
+  left: 0.7rem;
   top: 0.9rem;
   bottom: 0.9rem;
   width: 1px;
@@ -670,10 +673,9 @@ main {
 
 .timeline-dot {
   flex: none;
-  width: 1.8rem;
-  font-size: 1.2rem;
-  line-height: 1.3;
-  text-align: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.1rem;
   z-index: 1;
 }
 
@@ -1633,13 +1635,4 @@ body.pre-open {
   text-transform: uppercase;
   color: var(--ink-soft);
   margin: 0;
-}
-
-.card-reception {
-  font-family: var(--sans);
-  font-size: 0.34rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin: 0.35em 0 0;
 }
