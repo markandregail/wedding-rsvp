@@ -1413,7 +1413,14 @@ body.pre-open {
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at 50% 35%, var(--paper-alt), var(--paper) 75%);
-  overflow: hidden;
+  /* The open envelope's artwork is portrait (taller than the closed one)
+     and overlaps above/below its own box by design (see .envelope-open-layer
+     below). The width cap on .envelope.open keeps that from exceeding the
+     viewport on most screens, but overflow is scrollable rather than
+     hidden as a safety net for anything unusually short/zoomed that still
+     doesn't fit — better a scroll than content silently cut off. */
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: opacity 500ms ease, transform 500ms ease;
 }
 
@@ -1465,6 +1472,18 @@ body.pre-open {
   max-width: 480px;
   cursor: pointer;
   filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.16));
+}
+
+/* The open-envelope artwork is portrait (683x938) and, per
+   .envelope-open-layer, renders centered on and overlapping past the
+   (landscape) closed envelope's box — so its real on-screen height scales
+   with width alone, not viewport height. On a short viewport that
+   unconstrained height ran past the top/bottom of the screen with nothing
+   to clip it into view. Capping width by available height too (using the
+   open artwork's own aspect ratio) keeps the whole card on-screen on short
+   phones/landscape views without changing anything on taller screens. */
+.envelope.open {
+  width: min(calc(100vw - 32px), 480px, calc((100svh - 6rem) * 0.7283));
 }
 
 .envelope-img {
